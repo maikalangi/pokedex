@@ -7,6 +7,29 @@
     <title>Show Pokemon</title>
 </head>
 <body>
-    
+    <h1><%= pokemon.name %> </h1>
+    <img src="<%= pokemon.img %> " alt="<%= pokemon.name %> ">
+    <ul class="type">
+        <% for(let i=0; i<pokemon.type.length; i++){ %>
+            <li>
+                <%= pokemon.type[i] %> 
+            </li>
+        <% } %> 
+    </ul>
+    <ul class="stats">
+        <li id="hp">
+            HP:
+            <%= pokemon.stats.hp %> 
+        </li>
+        <li id="attack">
+            ATK:
+            <%= pokemon.stats.attack %> 
+        </li>
+        <li id="defense">
+            DFS:
+            <%= pokemon.stats.defense %> 
+        </li>
+    </ul>
+    <a href="/">Back</a>
 </body>
 </html>
