@@ -7,6 +7,14 @@
     <title>Pokemon Index</title>
 </head>
 <body>
-    
+    <h1>Pokemon</h1>
+
+    <ul>
+        <% for (let i=0; i<pokemon.length; i++) { %>
+            <li>
+                <img src="<%= pokemon[i].img %>" alt="<%= pokemon.name %>">
+            </li>
+        <% } %>
+    </ul>
 </body>
 </html>
