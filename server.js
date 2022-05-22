@@ -12,8 +12,8 @@ const app = express();
 const port = 3000;
 
 // MIDDLEWARE
+app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: false }));
-
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
@@ -26,28 +26,30 @@ app.get('/data/', (req, res)=>{
 
 // INDEX
 app.get('/', (req, res)=>{
+    res.send('Hello World');
+});
+app.get('/pokemon/', (req, res)=>{
     res.render('index.ejs', { 
         pokemon,
         tabTitle: 'Pokedex',
     });
 });
 // NEW
-app.get('/new/', (req, res)=>{
+app.get('/pokemon/new/', (req, res)=>{
     res.render('new.ejs', { 
         pokemon,
         tabTitle: 'New Entry',
     });
 });
 // SHOW
-app.get('/:id/', (req, res)=>{
-    // console.log(pokemon[req.params.id])
+app.get('/pokemon/:id/', (req, res)=>{
     res.render('show.ejs', {
         pokemon: pokemon[req.params.id],
         tabTitle: pokemon[req.params.id],
     });
 });
 // EDIT
-app.get('/:id/edit', (req, res)=>{
+app.get('/pokemon/:id/edit', (req, res)=>{
     // console.log(pokemon[req.params.id]);
     res.render(
         'edit.ejs',
@@ -60,24 +62,23 @@ app.get('/:id/edit', (req, res)=>{
     // console.log(pokemon[req.params.id]);
 });
 // CREATE
-app.post('/', (req, res)=>{
+app.post('/pokemon/', (req, res)=>{
     pokemon.push(req.body);
     console.log(req.body);
     res.redirect('/');
 });
 // UPDATE
-app.put('/:id', (req, res)=>{
+app.put('/pokemon/:id', (req, res)=>{
     // form
     pokemon[req.params.id] = req.body; // change selected value data
     res.redirect('/');
 });
 // DELETE
-app.delete('/:id', (req, res)=>{
+app.delete('/pokemon/:id', (req, res)=>{
     pokemon.splice(req.params.id, 1);
     res.redirect('/');
 });
-
-app.use(express.static('./public'));
+//=============================
 
 // REQUEST LISTENER
 app.listen(port, ()=>{
