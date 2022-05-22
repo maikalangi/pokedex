@@ -7,7 +7,7 @@
 <body>
     <h1>Edit <%= pokemon.name %></h1>
     <img src="<%= pokemon.img %> " alt="<%= pokemon.name %> ">
-    <form action="/<%= index %>?_method=PUT" method="POST">
+    <form action="/pokemon/<%= index %>?_method=PUT" method="POST">
         Name <input type="text" name="name" value="<%= pokemon.name %>"> <br/>
         Type <input type="text" name="type" value="<%= pokemon.type %>"><br/>
         <input type="submit" name="edit" value="SUBMIT EDIT"> <br/>
