@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
     <%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="/public/css/new.css">
     <title>New Pokemon</title>
 </head>
 <body class="new-body">
     <h1>New Pokemon</h1>
-    <form action="/pokemon/" method="POST">
-        Name: <input type="text" name="name">
-        Image: <input type="url" name="img">
-        Type: <input type="text" name="type">
+    <p>
+        Finish inputting information for the new pokemon below or upload image and info of your own new Pokemon!
+    </p>
+    <form id="new-list" action="/pokemon/" method="POST">
+        Name: <input type="text" name="name" value="Giratina"><br/>
+        Image: <input type="url" name="img" value="https://archives.bulbagarden.net/media/upload/c/c5/487Giratina-Altered.png"><br/>
+        Type: <input type="text" name="type"><br/>
+        HP: <input type="number" name="hp"><br/>
+        ATK: <input type="number" name="attack"><br/>
+        DFS: <input type="number" name="defense"><br/>
         <input type="submit" name="submit" value="Submit">
         <input type="submit" name="cancel" value="Cancel">
     </form>

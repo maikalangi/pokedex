@@ -6,27 +6,39 @@
     <title><%= tabTitle %> Stats</title>
 </head>
 <body class="show-body">
+    
+    <h1><%= pokemon.name %> Stats</h1>
     <div class="show-container">
-
-        <h1><%= pokemon.name %> Stats</h1>
         <img id="show-image" src="<%= pokemon.img %> " alt="<%= pokemon.name %> ">
         <ul class="show-list">
+            <li class="stats">
             <% for(let i=0; i<pokemon.type.length; i++){ %>
-                <li class="stats">
-                    <%= pokemon.type[i] %> 
+                    <%= pokemon.type[i] %>  
+                    <% } %>
                 </li>
-                <% } %>
                 <li id="hp">
                     HP:
+                    <% if (!pokemon.stats) { %>
+                        <%= pokemon.hp %> 
+                    <% }else{ %>
                     <%= pokemon.stats.hp %> 
+                    <% } %> 
                 </li>
                 <li id="attack">
                     ATK:
+                    <% if (!pokemon.stats) { %>
+                        <%= pokemon.hp %> 
+                    <% }else{ %>
                     <%= pokemon.stats.attack %> 
+                    <% } %> 
                 </li>
                 <li id="defense">
                     DFS:
+                    <% if (!pokemon.stats) { %>
+                        <%= pokemon.hp %> 
+                    <% }else{ %>
                     <%= pokemon.stats.defense %> 
+                    <% } %> 
                 </li>
             </ul>
             

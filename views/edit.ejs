@@ -7,18 +7,23 @@
 </head>
 <body class="edit-body">
     <h1><%= pokemon.name %> Edit Page</h1>
-    <img id="edit-image" src="<%= pokemon.img %>" alt="<%= pokemon.name %> ">
-    <form action="/pokemon/<%= index %>?_method=PUT" method="POST">
-        Name<input type="text" name="name" value="<%= pokemon.name %>"><br/>
-        Type<input type="text" name="type" value="<%= pokemon.type %>"><br/>
-        HP<input type="number" name="hp" value="<%= pokemon.stats.hp %>"><br/>
-        ATK<input type="number" name="attack" value="<%= pokemon.stats.attack %>"><br/>
-        DFS<input type="number" name="defense" value="<%= pokemon.stats.defense %>"><br/>
-        <input type="submit" name="edit" value="SUBMIT EDIT"> <br/>
-    </form>
-    <form action="/pokemon/">
-        <input type="submit" name="cancel" value="CANCEL">
-    </form>
+    <div class="edit-container" >
+        <section id="left-half">
+            <img id="edit-image" src="<%= pokemon.img %>" alt="<%= pokemon.name %> ">
+            <form id="cancel" action="/pokemon/">
+                <input type="submit" name="cancel" value="CANCEL">
+            </form>
+        </section>
+        <form class="edit-list" action="/pokemon/<%= index %>?_method=PUT" method="POST">
+            Name<input type="text" name="name" value="<%= pokemon.name %>">
+            Type<input type="text" name="type" value="<%= pokemon.type %>">
+            HP<input type="number" name="hp" value="<%= pokemon.stats.hp %>">
+            ATK<input type="number" name="attack" value="<%= pokemon.stats.attack %>">
+            DFS<input type="number" name="defense" value="<%= pokemon.stats.defense %>">
+            <input type="submit" name="edit" value="SUBMIT EDIT">
+        </form>
+
+    </div>
     <%# console.log(pokemon) %> 
 </body>
-</html>
+</html> 

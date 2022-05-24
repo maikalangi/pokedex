@@ -1,4 +1,27 @@
+.edit-container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 6%, rgba(255,255,255,1) 37%, rgba(255,255,255,1) 95%, rgba(255,255,255,0) 100%);
+}
+
+#left-half {
+    display: inline-block;
+    align-content: space-between;
+}
+
 #edit-image {
     height: 300px;
     width: auto;
+}
+
+.edit-list {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#cancel {
+    align-items: flex-end;
 }
