@@ -1,0 +1,27 @@
+.show-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 6%, rgba(255,255,255,1) 37%, rgba(255,255,255,1) 95%, rgba(255,255,255,0) 100%);
+}
+
+#show-image {
+    height: 300px;
+    width: auto;
+}
+
+.show-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+li {
+    list-style: none;
+}
+
+#back {
+    display: flex;
+    justify-content: center;
+}

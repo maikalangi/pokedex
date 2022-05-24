@@ -1,0 +1,11 @@
+h1 {
+    vertical-align: middle;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 72px;
+    background: -webkit-linear-gradient(#eee, rgb(33, 125, 245));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}

@@ -1,15 +1,16 @@
 // DEPENDENCIES
 const express = require('express');
 const pokemon = require('./models/pokemon');
-const morgan = require('./node_modules/morgan');
-const methodOverride = require('./node_modules/method-override');
+const morgan = require('morgan');
+const methodOverride = require('method-override')
 const res = require('express/lib/response');
+const { json } = require('express/lib/response');
 
 // APPLICATION INITIALIZATION
 const app = express();
 
 // APPLICATION CONFIGURATION
-const port = 3000;
+const port = 3001;
 
 // MIDDLEWARE
 app.use(express.static('./public'));
@@ -21,7 +22,7 @@ app.use(morgan('dev'));
 
 // DATA CHECK
 app.get('/data/', (req, res)=>{
-    res.send(pokemon);
+    res.send(pokemon[0].moves);
 });
 
 // INDEX
@@ -34,50 +35,60 @@ app.get('/pokemon/', (req, res)=>{
         tabTitle: 'Pokedex',
     });
 });
+
 // NEW
 app.get('/pokemon/new/', (req, res)=>{
-    res.render('new.ejs', { 
-        pokemon,
+    res.render('new.ejs', {
         tabTitle: 'New Entry',
     });
 });
-// SHOW
-app.get('/pokemon/:id/', (req, res)=>{
-    res.render('show.ejs', {
-        pokemon: pokemon[req.params.id],
-        tabTitle: pokemon[req.params.id],
-    });
+
+// DELETE
+app.delete('/pokemon/:id', (req, res)=>{
+    pokemon.splice(req.params.id, 1);
+    res.redirect('/pokemon/');
 });
+
+// UPDATE
+app.put('/pokemon/:id', (req, res)=>{
+   console.log(req.body.type);
+    pokemon[req.params.id].name=req.body.name;
+    pokemon[req.params.id].type=req.body.type;
+    pokemon[req.params.id].stats.hp=req.body.hp;
+    pokemon[req.params.id].stats.attack=req.body.attack;
+    pokemon[req.params.id].stats.defense=req.body.defense;
+    // pokemon[req.params.id] = req.body;
+    res.redirect('/pokemon/');
+});
+
+// CREATE
+app.post('/pokemon/', (req, res)=>{
+    pokemon.unshift(req.body);
+    console.log(req.body);
+    res.redirect('/pokemon/');
+});
+
 // EDIT
 app.get('/pokemon/:id/edit', (req, res)=>{
-    // console.log(pokemon[req.params.id]);
     res.render(
         'edit.ejs',
         {
             pokemon: pokemon[req.params.id],
             index: req.params.id,
-            tabTitle: pokemon[req.params.id] + ' Edit Page',
+            tabTitle: pokemon[req.params.id].name,
         }
     );
-    // console.log(pokemon[req.params.id]);
 });
-// CREATE
-app.post('/pokemon/', (req, res)=>{
-    pokemon.push(req.body);
-    console.log(req.body);
-    res.redirect('/');
+
+// SHOW
+app.get('/pokemon/:id/', (req, res)=>{
+    console.log(pokemon[req.params.id].name);
+    res.render('show.ejs', {
+        pokemon: pokemon[req.params.id],
+        tabTitle: pokemon[req.params.id].name,
+    });
 });
-// UPDATE
-app.put('/pokemon/:id', (req, res)=>{
-    // form
-    pokemon[req.params.id] = req.body; // change selected value data
-    res.redirect('/');
-});
-// DELETE
-app.delete('/pokemon/:id', (req, res)=>{
-    pokemon.splice(req.params.id, 1);
-    res.redirect('/');
-});
+
 //=============================
 
 // REQUEST LISTENER

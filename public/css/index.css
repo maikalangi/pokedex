@@ -1,0 +1,67 @@
+.index-body {
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 32%);
+}
+
+/* div container */
+.flex {
+    display: block;
+    justify-content: center;
+    height: 1100px;
+    align-items: stretch;
+}
+
+/* unordered list */
+#indexContainer {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 5px 15px 5px 15px;
+    border: 2px solid;
+    margin: 5px;
+    /* background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 6%, rgba(255,255,255,1) 37%, rgba(255,255,255,1) 95%, rgba(255,255,255,0) 100%); */
+    background-color: aliceblue;
+}
+
+/* list items */
+#indexItem {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    align-items: stretch;
+    flex-grow: 1;
+    border: 2px solid;
+    margin: 1px;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+}
+
+/* list images */
+.pic {
+    height: 200px;
+    width: min(200px), min-content;
+    margin: margin;
+}
+
+#index-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* create button */
+.inputForm {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+#inputButton {
+    vertical-align: middle;
+    align-self: center;
+}

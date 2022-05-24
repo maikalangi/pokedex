@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <% include ('./partials/head.ejs') %>
-    <title>Edit <%= tabTitle %></title>
+    <%- include ('./partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/edit.css">
+    <title><%= tabTitle %> Edit Page</title>
 </head>
-<body>
-    <h1>Edit <%= pokemon.name %></h1>
-    <img src="<%= pokemon.img %> " alt="<%= pokemon.name %> ">
+<body class="edit-body">
+    <h1><%= pokemon.name %> Edit Page</h1>
+    <img id="edit-image" src="<%= pokemon.img %>" alt="<%= pokemon.name %> ">
     <form action="/pokemon/<%= index %>?_method=PUT" method="POST">
-        Name <input type="text" name="name" value="<%= pokemon.name %>"> <br/>
-        Type <input type="text" name="type" value="<%= pokemon.type %>"><br/>
+        Name<input type="text" name="name" value="<%= pokemon.name %>"><br/>
+        Type<input type="text" name="type" value="<%= pokemon.type %>"><br/>
+        HP<input type="number" name="hp" value="<%= pokemon.stats.hp %>"><br/>
+        ATK<input type="number" name="attack" value="<%= pokemon.stats.attack %>"><br/>
+        DFS<input type="number" name="defense" value="<%= pokemon.stats.defense %>"><br/>
         <input type="submit" name="edit" value="SUBMIT EDIT"> <br/>
+    </form>
+    <form action="/pokemon/">
         <input type="submit" name="cancel" value="CANCEL">
     </form>
+    <%# console.log(pokemon) %> 
 </body>
 </html>

@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <% include ('./partials/head.ejs') %>
+    <%- include ('./partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/show.css">
     <title><%= tabTitle %> Stats</title>
 </head>
-<body>
-    <h1><%= pokemon.name %> Stats</h1>
-    <img src="<%= pokemon.img %> " alt="<%= pokemon.name %> ">
-    <ul class="type">
-        <% for(let i=0; i<pokemon.type.length; i++){ %>
-            <li>
-                <%= pokemon.type[i] %> 
-            </li>
-        <% } %>
-    </ul>
-    <ul class="stats">
-        <li id="hp">
-            HP:
-            <%= pokemon.stats.hp %> 
-        </li>
-        <li id="attack">
-            ATK:
-            <%= pokemon.stats.attack %> 
-        </li>
-        <li id="defense">
-            DFS:
-            <%= pokemon.stats.defense %> 
-        </li>
-    </ul>
-    <a href="/pokemon/">Back</a>
+<body class="show-body">
+    <div class="show-container">
+
+        <h1><%= pokemon.name %> Stats</h1>
+        <img id="show-image" src="<%= pokemon.img %> " alt="<%= pokemon.name %> ">
+        <ul class="show-list">
+            <% for(let i=0; i<pokemon.type.length; i++){ %>
+                <li class="stats">
+                    <%= pokemon.type[i] %> 
+                </li>
+                <% } %>
+                <li id="hp">
+                    HP:
+                    <%= pokemon.stats.hp %> 
+                </li>
+                <li id="attack">
+                    ATK:
+                    <%= pokemon.stats.attack %> 
+                </li>
+                <li id="defense">
+                    DFS:
+                    <%= pokemon.stats.defense %> 
+                </li>
+            </ul>
+            
+        </div>
+        <a id="back" href="/pokemon/">Back</a>
 </body>
 </html>
